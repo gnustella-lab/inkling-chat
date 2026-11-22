@@ -23,6 +23,11 @@ jobs:
         with:
           gradle-version: "8.11.1"
 
+      - name: Install NDK and CMake
+        run: |
+          SDKMANAGER="${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager"
+          "$SDKMANAGER" --install "ndk;27.2.124990811" "cmake;3.22.1"
+
       - name: Build debug APK
         run: gradle :app:assembleDebug --no-daemon --stacktrace
 
