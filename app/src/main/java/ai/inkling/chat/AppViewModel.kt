@@ -1,8 +1,9 @@
 package ai.inkling.chat
 
 import android.app.ActivityManager
+import android.app.Application
 import android.content.Context
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -32,9 +33,9 @@ data class BenchState(
     val error: String? = null,
 )
 
-class AppViewModel(context: Context) : ViewModel() {
+class AppViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val appContext = context.applicationContext
+    private val appContext = application.applicationContext
 
     val engine = LlamaEngine
     val modelManager = ModelManager(File(appContext.filesDir, "models"))
