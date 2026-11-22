@@ -1,6 +1,8 @@
 #include <jni.h>
 #include <android/log.h>
+#define DEPRECATED(func, hint) func
 #include <llama.h>
+#undef DEPRECATED
 
 #include <atomic>
 #include <chrono>
@@ -298,7 +300,7 @@ Java_ai_inkling_chat_LlamaEngine_nativeComplete(
     handle->abort_requested.store(false);
 
     constexpr size_t kMaxBatch = 256;
-    llama_batch batch = llama_batch_init(kMaxBatch);
+    llama_batch batch = llama_batch_init(kMaxBatch, 0, 1);
     std::string output;
 
     llama_sampler * chain = llama_sampler_chain_init(llama_sampler_chain_default_params());
