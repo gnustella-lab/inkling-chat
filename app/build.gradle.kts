@@ -7,7 +7,7 @@ plugins {
 android {
     namespace = "ai.inkling.chat"
     compileSdk = 35
-    ndkVersion = "27.2.124990811"
+    ndkVersion = "27.0.12077973"
 
     defaultConfig {
         applicationId = "ai.inkling.chat"
